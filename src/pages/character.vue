@@ -7,8 +7,10 @@ const route = useRoute();
 
 const { id } = route.params;
 
-const { character, getCharacter } = useAPI();
+const { character, getCharacter, quotes, getQuotes } = useAPI();
+
 getCharacter(id);
+getQuotes(id);
 </script>
 
 <template>
@@ -27,4 +29,13 @@ getCharacter(id);
   </div>
 
   <div v-else>Loading ...</div>
+  <div class="mt-8">
+    <p
+      class="px-4 py-6 my-4 text-xl italic text-center bg-pink-100 rounded-lg"
+      v-for="quote in quotes"
+      :key="quote._id"
+    >
+      {{ quote.dialog }}
+    </p>
+  </div>
 </template>

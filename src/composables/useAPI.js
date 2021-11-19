@@ -3,6 +3,7 @@ import axios from "axios";
 
 const characters = ref();
 const character = ref();
+const quotes = ref();
 
 const api = axios.create({
   baseURL: "https://the-one-api.dev/v2/",
@@ -22,7 +23,19 @@ export const useAPI = () => {
     character.value = response.data.docs[0];
   };
 
+  const getQuotes = async (id) => {
+    const response = await api.get(`character/${id}/quote`);
+    quotes.value = response.data.docs;
+  };
+
   getCharacters();
 
-  return { characters, character, getCharacters, getCharacter };
+  return {
+    characters,
+    character,
+    quotes,
+    getQuotes,
+    getCharacters,
+    getCharacter,
+  };
 };
