@@ -1,6 +1,8 @@
 <script setup>
 import { useAPI } from "../composables/useAPI";
-const { characters, getCharacters } = useAPI();
+const { characters, character, getCharacters } = useAPI();
+
+character.value = "";
 </script>
 
 <template>
